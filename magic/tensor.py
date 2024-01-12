@@ -6,7 +6,7 @@ class Tensor:
     """ basic tensor """
 
     def __init__(self, data: float) -> "Tensor":
-        self.data = np.array(data)
+        self.data = jax.device_put(data)
 
     def __add__(self, x: Union["Tensor", float]) -> "Tensor":
         if isinstance(x, Tensor):
