@@ -21,7 +21,7 @@ class Distribution:
 class Normal(Distribution):
     """ normal distribution """
 
-    def __init__(self, mean: int = 0, std: int = 1) -> None:
+    def __init__(self, mean: float = 0.0, std: float = 1.0) -> None:
         self.mean = mean
         self.std = std
 
