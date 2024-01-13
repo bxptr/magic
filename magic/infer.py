@@ -1,5 +1,5 @@
-from magic.tensor import Tensor
-from magic.dists import Distribution, Normal
+from magic import Tensor
+from magic.dist import Distribution, Normal
 
 import jax.numpy as np
 
