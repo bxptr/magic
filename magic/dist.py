@@ -22,8 +22,9 @@ class Normal(Distribution):
     """ normal distribution """
 
     def __init__(self, mean: float = 0.0, std: float = 1.0) -> None:
-        self.mean = mean
-        self.std = std
+        self.mean = Tensor(mean)
+        self.std = Tensor(std)
+        self.params = [mean, std]
 
     def log_density(self, x: Tensor) -> Tensor:
         const = Tensor(np.log(np.sqrt(2 * np.pi)))
