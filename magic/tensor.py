@@ -9,6 +9,9 @@ class Tensor:
     def __init__(self, data: float) -> "Tensor":
         self.data = jax.device_put(data)
 
+        self.grad = 0
+        self.requires_grad = False
+
     def __add__(self, x: Union["Tensor", float]) -> "Tensor":
         if isinstance(x, Tensor):
             return Tensor(self.data + x.data)
