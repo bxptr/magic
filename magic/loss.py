@@ -2,6 +2,8 @@ from magic import Tensor
 from magic import Module
 
 def elbo(model: Module, y: Tensor, *x: Tensor) -> Tensor:
+    """ ELBO loss """
+
     guide = model.guide()
     dist = model(*x)
     log_density_dist = dist.log_density(y)
