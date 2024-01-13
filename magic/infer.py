@@ -19,6 +19,7 @@ class MetropolisHastings:
         self.dist = dist
         self.warmup = warmup
         self.thinning = thinning
+
         self.samples = []
 
     def run(self) -> None:
