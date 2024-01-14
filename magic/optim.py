@@ -1,16 +1,17 @@
 from magic import Tensor
+from magic import Module
 
 class Adam:
     """ Adam optimizer """
 
-    def __init__(self, dists: dict, lr: float = 0.001, beta_1: float = 0.9, beta_2: float = 0.999, epsilon: float = 1e-8):
-        self.dists = dists
+    def __init__(self, model: Module, lr: float = 0.001, beta_1: float = 0.9, beta_2: float = 0.999, epsilon: float = 1e-8):
+        self.dists = self.model.guide()
         self.lr = lr
         self.beta_1 = beta_1
         self.beta_2 = beta_2
         self.epsilon = epsilon
-        self.m = {n: d.params for n, d in dists.items()}
-        self.v = {n: d.params for n, d in dists.items()}
+        self.m = {n: d.params for n, d in self.dists.items()}
+        self.v = {n: d.params for n, d in self.dists.items()}
         self.t = 0
 
     def step(self):
