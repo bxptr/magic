@@ -27,8 +27,8 @@ class MetropolisHastings:
         for i in tqdm.trange(self.iters):
             new = self.dist.sample()
             p_curr = self.dist.log_density(curr)
-            p_new = self.dist.log_desnity(new)
-            p_acceptance = min(1, (p_new / p_curr).data)
+            p_new = self.dist.log_density(new)
+            p_acceptance = min(1, np.exp(p_new - p_curr))
             if np.random.rand() < p_acceptance:
                 curr = new
             if i >= self.warmup and (i - self.warmup) % self.thinning == 0:
