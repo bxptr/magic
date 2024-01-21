@@ -1,13 +1,11 @@
 import jax
 import jax.numpy as np
 
-class Normal(Distribution):
+class Normal:
     """ normal distribution """
 
     def __init__(self, mean: float = 0.0, std: float = 1.0) -> None:
-        self.mean = np.array(mean)
-        self.std = np.array(std)
-        self.params = (self.mean, self.std)
+        self.params = {"mean": np.array(mean), "std": np.array(std)}
         self.key = jax.random.PRNGKey(0)
 
     def log_density(self, x: np.array) -> np.array:
